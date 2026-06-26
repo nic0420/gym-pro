@@ -196,7 +196,7 @@ export default function MembersPage() {
               <div className="space-y-4 border-t pt-4">
                 <h4 className="font-semibold text-slate-900">Renovar / Asignar Plan</h4>
                 <div className="flex gap-4">
-                  <Select onValueChange={setPlanToRenew}>
+                  <Select onValueChange={(val: string | null) => { if (val) setPlanToRenew(val) }}>
                     <SelectTrigger className="flex-1">
                       <SelectValue placeholder="Seleccionar Plan" />
                     </SelectTrigger>
