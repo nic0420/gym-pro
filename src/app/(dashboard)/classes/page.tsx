@@ -85,11 +85,9 @@ export default function ClassManagementPage() {
         </div>
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-md">
+          <DialogTrigger render={<Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-md" />}>
               <Plus className="mr-2 h-4 w-4" />
               Nueva Sesión
-            </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -98,7 +96,7 @@ export default function ClassManagementPage() {
             <form onSubmit={handleCreateSession} className="space-y-4 mt-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Disciplina</label>
-                <Select onValueChange={(val) => setFormData({...formData, classTypeId: val})}>
+                <Select onValueChange={(val: string | null) => { if (val) setFormData({...formData, classTypeId: val}) }}>
                   <SelectTrigger>
                     <SelectValue placeholder="Selecciona una disciplina" />
                   </SelectTrigger>
@@ -112,7 +110,7 @@ export default function ClassManagementPage() {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">Profesor a Cargo</label>
-                <Select onValueChange={(val) => setFormData({...formData, professorId: val})}>
+                <Select onValueChange={(val: string | null) => { if (val) setFormData({...formData, professorId: val}) }}>
                   <SelectTrigger>
                     <SelectValue placeholder="Selecciona el profesor" />
                   </SelectTrigger>

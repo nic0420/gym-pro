@@ -102,7 +102,7 @@ export default function MembersPage() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <Select value={statusFilter} onValueChange={(val: string | null) => { if (val) setStatusFilter(val) }}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Estado" />
             </SelectTrigger>
